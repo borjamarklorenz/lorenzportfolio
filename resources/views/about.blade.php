@@ -12,7 +12,7 @@
 <div class="grid">
     <section class="card s4 reveal" style="text-align:center">
         <div class="avatar-ring" style="width:150px;height:150px;margin:0 auto 18px">
-            <img src="{{ asset('images/profile.svg') }}" alt="Profile picture of {{ $student['name'] }}">
+            <img src="{{ asset('images/profile.jpg') }}" alt="Profile picture of {{ $student['name'] }}">
         </div>
         <h2 class="gradient-text" style="font-size:22px">{{ $student['name'] }}</h2>
         <p class="muted" style="font-size:13px">{{ $student['role'] }}</p>
@@ -53,7 +53,7 @@
                 <span class="badge">{{ $interest }}</span>
             @endforeach
         </div>
-        <p class="muted" style="font-size:12px;margin-top:16px">📸 To use a real photo: save it as <code>public/images/profile.jpg</code> and update the <code>&lt;img&gt;</code> source in the Blade views.</p>
+        <p class="muted" style="font-size:12px;margin-top:16px">📸 Profile photo: <code>public/images/profile.jpg</code> — replace the file anytime to update every page that uses it.</p>
     </section>
 </div>
 @endsection

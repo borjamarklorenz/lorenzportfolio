@@ -237,6 +237,9 @@ img { max-width: 100%; display: block; }
 .skill-fill { height: 100%; width: 0; border-radius: 8px; background: var(--grad); transition: width 1.2s cubic-bezier(0.25, 0.9, 0.3, 1); }
 
 /* Skills cards */
+.cert-image { display: block; max-width: 430px; margin: 14px auto 0; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.cert-image img { width: 100%; display: block; }
+.cert-image:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .skill-card .sc-icon, .cert-item .cc-icon {
   display: inline-grid; place-items: center;
   width: 40px; height: 40px; border-radius: 12px; margin-bottom: 10px;

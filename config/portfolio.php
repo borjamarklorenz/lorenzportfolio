@@ -67,7 +67,7 @@ return [
 
     'stats' => [
         ['label' => 'Pages built', 'value' => 7],
-        ['label' => 'Git commits', 'value' => 17],
+        ['label' => 'Git commits', 'value' => 19],
         ['label' => 'Projects published', 'value' => 0],
         ['label' => 'Skills highlighted', 'value' => 5],
     ],
@@ -79,10 +79,18 @@ return [
     ],
 
     // Certifications / seminars / workshops — add entries and the cards render automatically
-    // on the dedicated /certifications dashboard.
-    // Example: ['name' => 'Seminar Title', 'type' => 'Certification|Seminar|Workshop',
-    //           'issuer' => 'School / Org', 'year' => '2026', 'details' => '...']
-    'certifications' => [],
+    // on the dedicated /certifications dashboard. Add 'image' => 'images/<file>.jpg'
+    // to display the scanned certificate inside the card.
+    'certifications' => [
+        [
+            'name' => 'Understanding Startups & Getting Your Idea Ready for the Philippine Startup Challenge XI',
+            'type' => 'Webinar',
+            'issuer' => 'DICT — Department of Information and Communications Technology, Cordillera Administrative Region',
+            'year' => '2026',
+            'details' => 'Certificate of Participation for the webinar series held via Zoom on September 7, 2026 (1:30–4:30 PM), providing practical insights on understanding startups, developing innovative ideas, and preparing concepts for the Philippine Startup Challenge XI. Certificate No. COP-WSF-2026-68.',
+            'image' => 'images/certificate-dict-startup.jpg',
+        ],
+    ],
 
     // Ideas for future credentials shown on the certifications dashboard.
     'cert_ideas' => ['CompTIA ITF+', 'Google IT Support', 'AWS Cloud Practitioner', 'Microsoft Azure AZ-900', 'Cisco CCNA'],

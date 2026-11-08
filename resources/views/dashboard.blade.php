@@ -16,7 +16,7 @@
     {{-- Hero --}}
     <section class="card hero s12 reveal">
         <div class="avatar-ring">
-            <img src="{{ asset('images/profile.svg') }}" alt="Profile picture of {{ $student['name'] }}">
+            <img src="{{ asset('images/profile.jpg') }}" alt="Profile picture of {{ $student['name'] }}">
         </div>
         <div style="flex:1; min-width:260px">
             <p class="greet">👋 Hello, welcome to my portfolio</p>

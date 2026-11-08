@@ -18,8 +18,8 @@
             <div class="stat-label">Certifications earned</div>
         </div>
         <div class="card stat-card reveal">
-            <div class="stat-num" data-target="{{ $countType('Seminar') }}">0</div>
-            <div class="stat-label">Seminars attended</div>
+            <div class="stat-num" data-target="{{ $countType('Webinar') }}">0</div>
+            <div class="stat-label">Webinars attended</div>
         </div>
         <div class="card stat-card reveal">
             <div class="stat-num" data-target="{{ $countType('Workshop') }}">0</div>
@@ -48,6 +48,12 @@
                     <span class="t-period">{{ $cert['year'] }}</span>
                 </div>
                 <p class="muted" style="font-size:13.5px;margin-top:4px"><strong style="color:var(--text)">{{ $cert['issuer'] }}</strong> — {{ $cert['details'] }}</p>
+                @if(!empty($cert['image']))
+                    <a class="cert-image" href="{{ asset($cert['image']) }}" target="_blank" rel="noopener" title="Open the full certificate">
+                        <img src="{{ asset($cert['image']) }}" alt="Certificate: {{ $cert['name'] }}" loading="lazy">
+                    </a>
+                    <p class="muted" style="font-size:11.5px;margin-top:6px">🔗 Click the certificate to view the full-size scan.</p>
+                @endif
             </article>
         @empty
             <div class="empty-state" style="margin-top:14px">

@@ -44,7 +44,7 @@
     </nav>
 
     <div class="profile-card">
-        <img src="{{ asset('images/profile.svg') }}" alt="{{ $student['name'] }}" width="52" height="52">
+        <img src="{{ asset('images/profile.jpg') }}" alt="{{ $student['name'] }}" width="52" height="52">
         <div>
             <strong>{{ $student['name'] }}</strong>
             <small>Baddec, Palao<br>Bangued, Abra</small>
