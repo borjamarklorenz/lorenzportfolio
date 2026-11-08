@@ -1,6 +1,6 @@
 # Lorenz Portfolio — Mark Lorenz B. Borja
 
-**Static online portfolio built with Laravel Blade (no database).** This dashboard-style portfolio presents my basic information, educational background, projects, and public GitHub repository links in one place. It was created for **IPA BSIT 4 Midterm — Activity 1-3: Building and Hosting a Laravel Portfolio** and will be integrated into the final project.
+**Static online portfolio built with Laravel Blade (no database) — redesigned.** This dashboard-style portfolio presents my basic information, educational background, projects, and public GitHub repository links in one place. It was created for **IPA BSIT 4 Midterm — Activity 1-3: Building and Hosting a Laravel Portfolio** and will be integrated into the final project.
 
 - **Owner:** Mark Lorenz B. Borja — BSIT, Data Center College of Bangued, Philippines
 - **Location:** Baddec, Palao, Bangued, Abra, Philippines
@@ -10,14 +10,14 @@
 
 ## Features
 
-- **Dashboard home (`/`)** — profile photo, name, bio, contact badges, quick links, education + projects preview, and stats cards.
-- **Basic Information (`/about`)** — full name, contact details, short bio, profile picture.
-- **Educational Background (`/education`)** — schools attended, years, degrees/certifications (Data Center College of Bangued — Bachelor of Science in Information Technology).
-- **Projects (`/projects`)** — grid/list layout with descriptions. Currently empty per owner request, with an empty-state card ready to fill.
-- **Contact & GitHub links (`/contact`)** — clickable email/phone and GitHub icons/links to source code (this repo + profile).
-- **Laravel Blade templating (`.blade.php`)** — shared layout (`resources/views/layouts/main.blade.php`) with sidebar navigation.
-- **No database** — no migrations or models used for portfolio data; routes use closures returning Blade views.
-- **Responsive CSS** — custom `public/css/app.css`, no build step required.
+- **Dashboard home (`/`)** — animated hero with glowing gradient-ring profile photo, typing subtitle, contact badges, animated stat counters, skill progress bars, education/projects previews and "explore" navigation card.
+- **Basic Information (`/about`)** — full name, contact details, short bio, profile picture, interests chips.
+- **Educational Background (`/education`)** — gradient timeline for schools/years/degrees (Data Center College of Bangued — Bachelor of Science in Information Technology), animated learning-progress bars, certifications empty-state.
+- **Projects (`/projects`)** — grid layout with descriptions. Currently empty by design, with an elegant empty-state card and "planned ideas" + workflow cards ready to fill.
+- **Contact & GitHub links (`/contact`)** — clickable email/phone/location cards, GitHub links and a mailto-powered message form (no backend needed).
+- **Design system** — dark-first glassmorphism theme with light/dark toggle (persisted in localStorage), animated gradient orbs + scroll progress bar, reveal-on-scroll animations, Sora + Inter fonts, inline SVG icon system, responsive sidebar that collapses to a mobile drawer.
+- **Structure** — `PortfolioController` serves all pages; every piece of content lives in `config/portfolio.php` (single source of truth); layout uses partials (`head`, `sidebar`, `topbar`, `footer`, `scripts`) and a reusable `<x-icon>` Blade component.
+- **No database** — no migrations or models used for portfolio data.
 
 ## Tech stack
 
@@ -67,18 +67,19 @@ Descriptive commit messages are used throughout (no vague "fix/update/test").
 ## Project structure
 
 ```
-app/                  Laravel application (no models for this static site)
-routes/web.php        Closure routes → Blade views
+app/Http/Controllers/PortfolioController.php   Serves all five pages
+config/portfolio.php        Single source of truth for all content (edit here)
+routes/web.php              Routes mapped to PortfolioController
 resources/views/
-  layouts/main.blade.php
-  dashboard.blade.php
-  about.blade.php
-  education.blade.php
-  projects.blade.php
-  contact.blade.php
+  layouts/app.blade.php     Main layout (dark glass theme skeleton)
+  partials/{head,sidebar,topbar,footer,scripts}.blade.php
+  components/icon.blade.php <x-icon> inline SVG icon component
+  dashboard.blade.php  about.blade.php  education.blade.php
+  projects.blade.php   contact.blade.php
 public/
-  css/app.css
-  images/profile.svg  (placeholder — replace with profile.jpg)
+  css/app.css               Redesigned stylesheet (dark + light themes)
+  images/profile.svg        (Placeholder — replace with profile.jpg)
+  images/favicon.svg
 PROMPT_LOG.md
 README.md
 ```

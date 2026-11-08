@@ -76,6 +76,26 @@
 * Prompt used: "Generate a Word (.docx) file containing all prompts in order (same content as PROMPT_LOG.md) together with the git commit history showing descriptive messages."
 * Result/Output: Generated a Word-compatible report (see `PROMPT_AND_GIT_REPORT.docx` next to this log / in the submission folder) with cover info, verbatim prompt entries in order, agent outputs, and `git log --oneline --graph` + `git log --pretty=fuller` output. Submit the .docx alongside the repo URL and the in-repo PROMPT_LOG.md.
 
+### Task: Improvising the design, theme, and structure (user request)
+* Prompt used: "improvised all the design, theme, and structure of this website"
+* Result/Output: Full overhaul. Structure: added `PortfolioController` (routes now point to controller methods instead of closures), added `config/portfolio.php` as a single source of truth for all content (student info, contacts, GitHub links, education, skills, stats, projects), created partials (`head`, `sidebar`, `topbar`, `footer`, `scripts`) under `resources/views/partials`, and a reusable `<x-icon>` Blade component (inline SVG icons for home/user/cap/briefcase/mail/phone/pin/GitHub/sun/moon/external). Replaced the old `layouts/main.blade.php` with `layouts/app.blade.php`.
+
+### Task: Designing the new theme
+* Prompt used: "Improvise the theme: dark-first glassmorphism with a light mode, animated gradient orbs, glowing gradient avatar ring, animated stat counters, typing effect, gradient timeline, skill progress bars, scroll progress bar, reveal-on-scroll, Sora + Inter fonts, custom SVG favicon, and a light/dark toggle persisted in localStorage."
+* Result/Output: Rewrote `public/css/app.css` completely: theme variables with `[data-theme="light"]` overrides, glassy blurred cards, network gradient buttons, badge/chip components, timeline with gradient spine and pulsing dots, animated skill bars, empty-state styling, contact form fields, responsive breakpoints (sidebar becomes a hamburger drawer under 1080px), reduced-motion support. Added `public/images/favicon.svg` and redesigned `public/images/profile.svg` to the new indigo→purple→cyan gradient. Scripts in `partials/scripts.blade.php`: theme toggle, mobile drawer, scroll progress, IntersectionObserver reveals, count-up counters, skill-bar fill, typing rotator, and contact form → mailto compose.
+
+### Task: Rebuilding the five pages on the new structure
+* Prompt used: "Rebuild dashboard, about, education, projects, and contact views to consume config/portfolio.php through the new layout, with animated hero, stats, skills, timeline, empty-state projects, and a mailto contact form."
+* Result/Output: Rewrote all five Blade views. Dashboard: gradient-ring avatar, typed roles, animated counters (5 pages, 9 commits, 0 projects, 5 skills), skill bars, education preview, empty-state projects preview, explore card. About: glow photo card, bio paragraphs, key info list, interests. Education: gradient timeline with Current/Earlier statuses, skills card, certifications empty state. Projects: `@forelse` over config with elegant empty state plus "planned ideas" and "workflow" cards. Contact: email/phone/location cards, GitHub buttons, JS mailto form. Replaced default `welcome.blade.php` with a redirect card to the dashboard.
+
+### Task: Verifying the redesigned site
+* Prompt used: "Verify all routes still return 200 and pages render the new theme with no Blade errors; run route:list, view:clear and curl each page for key content."
+* Result/Output: `route:list` shows all five routes via `PortfolioController`. All pages return 200; rendered HTML checks confirm name, contacts, school/course, skill fills, empty-state, typing script and stylesheet present; no Whoops/exception output. Old view cache cleared via `php artisan view:clear`.
+
+### Task: Updating README and regenerating the Word report
+* Prompt used: "Update README.md to document the new design system, structure, config-driven content and partials, then regenerate PROMPT_AND_GIT_REPORT.docx so it includes the redesign prompts and latest git history."
+* Result/Output: README features/structure sections rewritten for the redesigned architecture. `generate_docx.php` re-run to rebuild `PROMPT_AND_GIT_REPORT.docx` with this task log and current `git log` included, then copies placed in the workspace root for submission.
+
 ---
 
 **Notes for instructors:** All prompts above were used to generate, debug, or style code. The repository is public, uses Blade only, has no migrations/models for portfolio data, and is kept intact for the final project (do not delete repo or local files per activity note). Deadline: August 28, 12:00 midnight.
