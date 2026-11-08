@@ -57,7 +57,7 @@ php artisan serve
 The repository is ready for [Vercel](https://vercel.com) using the community `vercel-php` PHP 8.4 runtime — no database is needed. Everything required is committed:
 
 - `api/index.php` — serverless entry point (prepares writable `/tmp` dirs, then forwards to `public/index.php`)
-- `vercel.json` — pins runtime, routes `/css/*` and `/images/*` to `public/`, passes everything else to the function, sets serverless-friendly env defaults (`stderr` logs, `cookie` sessions, `array` cache, compiled views in `/tmp`)
+- `vercel.json` — pins runtime, routes `/css/*` and `/images/*` to `public/`, passes everything else to the function, sets serverless-friendly env defaults (`stderr` logs, `cookie` sessions, `array` cache, compiled views in `/tmp`). Composer is **not** invoked in the build shell (it doesn't exist there) — the `vercel-php` runtime detects `composer.json`/`composer.lock` and installs dependencies automatically during the function build, so `installCommand`/`buildCommand` are deliberately no-ops.
 - `.vercelignore` — keeps `vendor/`, `tests/`, `storage/` and secrets out of the deployment bundle
 - `bootstrap/app.php` — trusts Vercel's proxy headers so pages/adapters render `https://` links behind the edge network
 
