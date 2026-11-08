@@ -1,32 +1,53 @@
-@extends('layouts.main')
+@extends('layouts.app')
 @section('title', 'Educational Background')
 @section('heading', 'Educational Background')
+@section('description', 'Schools attended, degrees, certifications and learning progress.')
+
 @section('content')
 <div class="grid">
-  <section class="card" style="grid-column:span 8">
-    <h3>School history</h3>
-    <div class="timeline" style="margin-top:14px">
-      <div class="timeline-item">
-        <span class="badge">Current</span>
-        <h3>Data Center College of Bangued – Philippines</h3>
-        <p class="muted" style="margin:4px 0">Bachelor of Science in Information Technology (BSIT)</p>
-        <p class="small muted">Course focused on systems, programming, and web development. This portfolio was created for IPA BSIT 4 Midterm — Laravel Blade portfolio, Git/GitHub workflow, and AI prompt documentation.</p>
-      </div>
-      <div class="timeline-item">
-        <span class="badge" style="background:#f0fdf4;color:#15803d;border-color:#bbf7d0">Earlier</span>
-        <h3>Earlier schooling</h3>
-        <p class="muted" style="margin:4px 0">To be updated</p>
-        <p class="small muted">Add elementary / high school years and certifications here as you gather them. Format: school name, years attended, degree/certification.</p>
-      </div>
-    </div>
-  </section>
-  <aside class="card side" style="grid-column:span 4">
-    <h3>Certifications & skills</h3>
-    <p class="muted">Laravel • PHP • Blade templating • HTML/CSS • Git & GitHub</p>
-    <div class="badges">
-      <span class="badge">PHP</span><span class="badge">Laravel 12</span><span class="badge">Blade</span><span class="badge">Git</span>
-    </div>
-    <p class="small muted" style="margin-top:12px">Add certifications (school, year, title) in this card.</p>
-  </aside>
+    <section class="card s8 reveal">
+        <div class="section-hint"><span class="dot"></span><p>School history</p></div>
+        <h2>Academic timeline</h2>
+        <div class="timeline" style="margin-top:16px">
+            @foreach(config('portfolio.education') as $edu)
+                <div class="timeline-item card hover">
+                    <div class="t-head">
+                        <span class="t-status {{ strtolower($edu['status']) }}">{{ $edu['status'] }}</span>
+                        <span class="t-period">{{ $edu['period'] }}</span>
+                    </div>
+                    <h3>{{ $edu['school'] }}</h3>
+                    <p class="muted" style="margin:3px 0 6px;font-size:13.5px">{{ $edu['degree'] }}</p>
+                    <p style="font-size:13.5px">{{ $edu['details'] }}</p>
+                </div>
+            @endforeach
+        </div>
+
+        <div class="divide"></div>
+        <div class="section-hint"><span class="dot"></span><p>Certifications</p></div>
+        <div class="empty-state" style="padding:22px 18px">
+            <div class="empty-icon"><x-icon name="cap"/></div>
+            <h3 style="font-size:15px">No certifications listed yet</h3>
+            <p class="muted">Add seminars, workshops and certificates here as they are earned.</p>
+        </div>
+    </section>
+
+    <aside class="s4">
+        <section class="card reveal" style="margin-bottom:18px">
+            <div class="section-hint"><span class="dot"></span><p>Skills</p></div>
+            <h2>Learning progress</h2>
+            @foreach(config('portfolio.skills') as $skill)
+                <div class="skill">
+                    <div class="skill-top"><b>{{ $skill['name'] }}</b><span>{{ $skill['level'] }}%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" data-level="{{ $skill['level'] }}"></div></div>
+                </div>
+            @endforeach
+        </section>
+        <section class="card reveal">
+            <div class="section-hint"><span class="dot"></span><p>Currently</p></div>
+            <h2>BSIT student</h2>
+            <p class="muted" style="font-size:13.5px">Building Laravel Blade applications and version-controlling every step with Git & GitHub as part of the IPA BSIT 4 Midterm.</p>
+            <a class="btn btn-sm" style="margin-top:14px" href="{{ route('projects') }}">See projects →</a>
+        </section>
+    </aside>
 </div>
 @endsection

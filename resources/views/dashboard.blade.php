@@ -1,59 +1,123 @@
-@extends('layouts.main')
+@extends('layouts.app')
 @section('title', 'Dashboard')
-@section('heading', 'Welcome back, Mark Lorenz 👋')
+@section('heading', 'Dashboard')
+@section('description', 'Welcome to my portfolio — explore my info, education, projects and GitHub links.')
+
 @section('content')
+@php
+    $student = config('portfolio.student');
+    $contact = config('portfolio.contact');
+    $github = config('portfolio.github');
+    $stats = config('portfolio.stats');
+    $skills = config('portfolio.skills');
+@endphp
+
 <div class="grid">
-  <section class="card hero">
-    <div class="hero-flex">
-      <img src="{{ asset('images/profile.svg') }}" alt="Profile picture of Mark Lorenz B. Borja" onerror="this.src='https://ui-avatars.com/api/?name=Mark+Lorenz+B+Borja&background=2563eb&color=fff&size=256'">
-      <div>
-        <p class="badge">BSIT Student • Data Center College of Bangued</p>
-        <h2 style="font-size:28px;margin:10px 0 6px">Mark Lorenz B. Borja</h2>
-        <p class="muted" style="line-height:1.7;margin:0">Information Technology student from Baddec, Palao, Bangued, Abra. This static portfolio is built with Laravel Blade — no database, no migrations — and hosted from a public GitHub repository. Explore my education and projects below, or view the source code directly.</p>
-        <div class="badges">
-          <span class="badge">📧 borjamarklorenz07@gmail.com</span>
-          <span class="badge">📱 09629974405</span>
-          <span class="badge">📍 Bangued, Abra, Philippines</span>
+    {{-- Hero --}}
+    <section class="card hero s12 reveal">
+        <div class="avatar-ring">
+            <img src="{{ asset('images/profile.svg') }}" alt="Profile picture of {{ $student['name'] }}">
         </div>
-        <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
-          <a class="btn" href="{{ route('about') }}">View basic info →</a>
-          <a class="btn ghost" href="https://github.com/borjamarklorenz" target="_blank">🐙 GitHub ↗</a>
-          <a class="btn ghost" href="https://github.com/borjamarklorenz/lorenzportfolio" target="_blank">📁 Source repo ↗</a>
+        <div style="flex:1; min-width:260px">
+            <p class="greet">👋 Hello, welcome to my portfolio</p>
+            <h2 class="hero-name">I’m <span class="gradient-text">{{ $student['name'] }}</span></h2>
+            <p class="typed-line"><span id="typed"></span></p>
+            <p class="intro muted">{{ $student['bio'][0] }} {{ $student['bio'][1] }}</p>
+            <div class="badges" style="margin-top:14px">
+                <span class="badge"><x-icon name="mail"/>{{ $contact['email'] }}</span>
+                <span class="badge"><x-icon name="phone"/>{{ $contact['phone'] }}</span>
+                <span class="badge"><x-icon name="pin"/>Bangued, Abra</span>
+            </div>
+            <div class="cta-row">
+                <a class="btn" href="{{ route('about') }}">View basic info</a>
+                <a class="btn btn-ghost" href="{{ $github['repo'] }}" target="_blank" rel="noopener">
+                    <x-icon name="github" width="17" height="17"/> Source code ↗
+                </a>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <aside class="card side">
-    <h3>Quick overview</h3>
-    <div class="kv" style="grid-template-columns:110px 1fr;font-size:14px">
-      <b>Name</b><span>Mark Lorenz B. Borja</span>
-      <b>Course</b><span>BSIT</span>
-      <b>School</b><span>Data Center College of Bangued</span>
-      <b>Location</b><span>Baddec, Palao, Bangued, Abra</span>
-      <b>Focus</b><span>Laravel • Blade • Git/GitHub</span>
+    {{-- Stats --}}
+    <div class="stats s12">
+        @foreach($stats as $stat)
+            <div class="card stat-card reveal">
+                <div class="stat-num" data-target="{{ $stat['value'] }}">0</div>
+                <div class="stat-label">{{ $stat['label'] }}</div>
+            </div>
+        @endforeach
     </div>
-    <a href="{{ route('education') }}" style="display:inline-block;margin-top:14px;color:var(--brand);font-weight:800">See education →</a>
-  </aside>
 
-  <div class="stats">
-    <div class="stat"><span class="muted small">Projects published</span><div class="num">0</div><span class="small muted">Empty for now — section ready to fill</span></div>
-    <div class="stat"><span class="muted small">GitHub repos linked</span><div class="num">1</div><span class="small muted"><a href="https://github.com/borjamarklorenz/lorenzportfolio" target="_blank" style="color:var(--brand);font-weight:800">lorenzportfolio ↗</a></span></div>
-    <div class="stat"><span class="muted small">Stack</span><div class="num">Laravel 12</div><span class="small muted">Blade • CSS • No database</span></div>
-  </div>
+    {{-- Skills --}}
+    <section class="card s7 reveal">
+        <div class="section-hint"><span class="dot"></span><p>Learning progress</p></div>
+        <h2>Skills & hands-on focus</h2>
+        <p class="muted" style="font-size:13.5px">Self-assessed proficiency built from coursework and this portfolio project.</p>
+        @foreach($skills as $skill)
+            <div class="skill">
+                <div class="skill-top"><b>{{ $skill['name'] }}</b><span>{{ $skill['level'] }}%</span></div>
+                <div class="skill-bar"><div class="skill-fill" data-level="{{ $skill['level'] }}"></div></div>
+            </div>
+        @endforeach
+    </section>
 
-  <section class="card" style="grid-column:span 7">
-    <h3>Education preview</h3>
-    <p class="muted">Data Center College of Bangued – Philippines<br><strong>Bachelor of Science in Information Technology (BSIT)</strong></p>
-    <a class="btn ghost" href="{{ route('education') }}">Full education history →</a>
-  </section>
-  <section class="card" style="grid-column:span 5">
-    <h3>Projects preview</h3>
-    <div class="empty" style="padding:18px">
-      <strong>No projects yet.</strong>
-      <p class="muted small" style="margin:6px 0 0">Project cards will appear here once added. The grid layout is ready.</p>
-    </div>
-    <a class="btn ghost" style="margin-top:12px" href="{{ route('projects') }}">Open projects page →</a>
-  </section>
+    {{-- Education preview --}}
+    <section class="card s5 reveal">
+        <div class="section-hint"><span class="dot"></span><p>Education</p></div>
+        <h2>Data Center College of Bangued</h2>
+        <p class="muted" style="font-size:14px">Bachelor of Science in Information Technology (BSIT) — currently taking up, focused on web development and systems.</p>
+        <div class="divide"></div>
+        <div class="badges chips">
+            @foreach($student['interests'] as $interest)
+                <span class="badge">{{ $interest }}</span>
+            @endforeach
+        </div>
+        <a class="btn btn-ghost btn-sm" style="margin-top:18px" href="{{ route('education') }}">Full education history →</a>
+    </section>
+
+    {{-- Projects preview --}}
+    <section class="card s7 reveal">
+        <div class="section-hint"><span class="dot"></span><p>Projects</p></div>
+        @if(empty(config('portfolio.projects')))
+            <div class="empty-state" style="padding:26px 20px">
+                <div class="empty-icon"><x-icon name="briefcase"/></div>
+                <h3>No projects published yet</h3>
+                <p class="muted">The project grid is set up and ready — cards will appear here automatically once added to <code>config/portfolio.php</code>.</p>
+            </div>
+        @else
+            <div class="grid-cards">
+                @foreach(config('portfolio.projects') as $project)
+                    <article class="card hover project-card">
+                        <h3>{{ $project['title'] }}</h3>
+                        <p class="muted" style="font-size:13.5px">{{ $project['description'] }}</p>
+                        <div class="tags">
+                            @foreach($project['tags'] as $tag)<span class="chip">{{ $tag }}</span>@endforeach
+                        </div>
+                        @if(!empty($project['repo']))
+                            <a class="btn btn-sm btn-ghost" style="align-self:flex-start;margin-top:6px" href="{{ $project['repo'] }}" target="_blank" rel="noopener">Repository ↗</a>
+                        @endif
+                    </article>
+                @endforeach
+            </div>
+        @endif
+        <a class="btn btn-ghost btn-sm" style="margin-top:18px" href="{{ route('projects') }}">Open projects page →</a>
+    </section>
+
+    {{-- Explore / GitHub --}}
+    <section class="card s5 reveal" style="background:linear-gradient(140deg, rgba(99,102,241,0.16), rgba(34,211,238,0.1)), var(--panel)">
+        <div class="section-hint"><span class="dot"></span><p>Explore</p></div>
+        <h2>Find your way around</h2>
+        <div class="info-list" style="margin-top:12px">
+            <b>Basic info</b><span><a href="{{ route('about') }}">/about — bio, contacts & photo</a></span>
+            <b>Education</b><span><a href="{{ route('education') }}">/education — school & skills</a></span>
+            <b>Projects</b><span><a href="{{ route('projects') }}">/projects — empty grid, ready</a></span>
+            <b>Contact</b><span><a href="{{ route('contact') }}">/contact — email, phone & GitHub</a></span>
+        </div>
+        <div class="cta-row">
+            <a class="btn" href="{{ route('contact') }}">Get in touch</a>
+            <a class="btn btn-ghost" href="{{ $github['profile'] }}" target="_blank" rel="noopener">
+                <x-icon name="github" width="17" height="17"/> My GitHub
+            </a>
+        </div>
+    </section>
 </div>
 @endsection
