@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
+  "outputDirectory": "public",
   "functions": {
     "api/index.php": {
       "runtime": "vercel-php@0.8.0",
@@ -8,13 +9,14 @@
     }
   },
   "installCommand": "echo \"Nothing to install via npm/shell — the vercel-php runtime runs Composer itself against composer.lock\"",
-  "buildCommand": "echo \"Lorenz Portfolio — no frontend build step required\"",
+  "buildCommand": "echo \"Lorenz Portfolio — assets are served straight from public/\"",
   "routes": [
-    { "src": "/css/(.*)", "dest": "/public/css/$1" },
-    { "src": "/images/(.*)", "dest": "/public/images/$1" },
-    { "src": "/robots.txt", "dest": "/public/robots.txt" },
-    { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
-    { "src": "/api/index\\.php", "dest": "/api/index.php" },
+    { "src": "/", "dest": "/api/index.php" },
+    { "src": "/index\\.php", "dest": "/api/index.php" },
+    { "src": "/\\.htaccess", "dest": "/api/index.php" },
+    { "src": "/storage/(.*)", "dest": "/api/index.php" },
+    { "src": "/bootstrap/(.*)", "dest": "/api/index.php" },
+    { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/api/index.php" }
   ],
   "env": {
