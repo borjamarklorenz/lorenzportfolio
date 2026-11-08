@@ -128,6 +128,10 @@
 * Prompt used: "screenshot1, screenshot2, screenshot3 — put this in projects with the title of BARANGAY DIRECTORY AND DOCUMENT REQUEST AND PUBLIC INFORMATION SYSTEM"
 * Result/Output: Viewed all three screenshots (BDRPIS login page, public homepage for Barangay Linasin Zone 1 Bangued Abra, Quick Services section) and copied them to `public/images/projects/` as `bdrpis-login.png`, `bdrpis-home.png`, `bdrpis-services.png`. Added the first real project to `config/portfolio.php` under `projects` with the requested title, a description built from the visible features (document requests & tracking, public announcements, resident verification, relief distribution, officials directory), tags, and an `images` array with alt texts. Rebuilt `projects.blade.php` so projects with screenshots render as a wide card: screenshot gallery (main preview + clickable thumbnails with active highlight via new JS in `scripts.blade.php`), feature list, tags and optional repo button; empty-state kept for when the list is emptied again. Dashboard projects preview now shows a banner linking to the gallery. Stats updated: Projects published = 1, Git commits refreshed; "Barangay Services App" removed from the planned-ideas chips since it shipped.
 
+### Task: Removing the Workflow card from Projects (user request)
+* Prompt used: "remove workflow in projects"
+* Result/Output: Deleted the "How projects get here / Workflow" card from `projects.blade.php` and widened the "Planned project ideas / On the roadmap" card to full width so the page stays balanced. Gallery, project card and roadmap chips unchanged.
+
 ---
 
 **Notes for instructors:** All prompts above were used to generate, debug, or style code. The repository is public, uses Blade only, has no migrations/models for portfolio data, and is kept intact for the final project (do not delete repo or local files per activity note). Deadline: August 28, 12:00 midnight.
