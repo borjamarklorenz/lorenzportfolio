@@ -27,6 +27,15 @@ if (isset($_SERVER['VERCEL']) || isset($_ENV['VERCEL'])) {
             @mkdir($dir, 0775, true);
         }
     }
+
+    // Fallback: if APP_KEY is missing from the deployment environment
+    // (dashboards get misconfigured), generate an ephemeral per-instance
+    // key instead of throwing a 500 MissingAppKeyException.
+    // Safe here: this portfolio is stateless (cookie/array drivers) and
+    // has no persisted data that server-side decryption must recover.
+    if (empty($_ENV['APP_KEY'])) {
+        $_ENV['APP_KEY'] = 'base64:'.base64_encode(random_bytes(32));
+    }
 }
 
 require __DIR__.'/../public/index.php';
