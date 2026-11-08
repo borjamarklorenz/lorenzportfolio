@@ -109,6 +109,8 @@
         <div class="info-list" style="margin-top:12px">
             <b>Basic info</b><span><a href="{{ route('about') }}">/about — bio, contacts & photo</a></span>
             <b>Education</b><span><a href="{{ route('education') }}">/education — school & skills</a></span>
+            <b>Skills</b><span><a href="{{ route('skills') }}">/skills — progress dashboard</a></span>
+            <b>Certifications</b><span><a href="{{ route('certifications') }}">/certifications — awards & plans</a></span>
             <b>Projects</b><span><a href="{{ route('projects') }}">/projects — empty grid, ready</a></span>
             <b>Contact</b><span><a href="{{ route('contact') }}">/contact — email, phone & GitHub</a></span>
         </div>

@@ -24,8 +24,11 @@
 
         <div class="divide"></div>
         <div class="section-hint"><span class="dot"></span><p>Certifications</p></div>
-        <p class="muted" style="font-size:13.5px">Certifications, seminars and workshops now live in their own dashboard so they always stay up to date.</p>
-        <a class="btn btn-sm" style="margin-top:12px" href="{{ route('skills') }}">Open Skills & Certifications dashboard →</a>
+        <p class="muted" style="font-size:13.5px">Certifications, seminars and workshops now live in their own dedicated dashboard, separate from skills.</p>
+        <div class="cta-row" style="margin-top:12px">
+            <a class="btn btn-sm" href="{{ route('skills') }}">⚡ Skills dashboard →</a>
+            <a class="btn btn-sm btn-ghost" href="{{ route('certifications') }}">🏆 Certifications dashboard →</a>
+        </div>
     </section>
 
     <aside class="s4">

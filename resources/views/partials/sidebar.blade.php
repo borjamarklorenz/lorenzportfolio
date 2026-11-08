@@ -23,7 +23,10 @@
             <x-icon name="cap"/><span>Education</span>
         </a>
         <a href="{{ route('skills') }}" class="{{ request()->routeIs('skills') ? 'active' : '' }}">
-            <x-icon name="zap"/><span>Skills & Certs</span>
+            <x-icon name="zap"/><span>Skills</span>
+        </a>
+        <a href="{{ route('certifications') }}" class="{{ request()->routeIs('certifications') ? 'active' : '' }}">
+            <x-icon name="award"/><span>Certifications</span>
         </a>
         <a href="{{ route('projects') }}" class="{{ request()->routeIs('projects') ? 'active' : '' }}">
             <x-icon name="briefcase"/><span>Projects</span>

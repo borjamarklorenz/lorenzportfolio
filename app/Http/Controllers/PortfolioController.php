@@ -30,6 +30,11 @@ class PortfolioController extends Controller
         return view('skills');
     }
 
+    public function certifications(): View
+    {
+        return view('certifications');
+    }
+
     public function projects(): View
     {
         return view('projects');

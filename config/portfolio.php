@@ -66,8 +66,8 @@ return [
     ],
 
     'stats' => [
-        ['label' => 'Pages built', 'value' => 5],
-        ['label' => 'Git commits', 'value' => 9],
+        ['label' => 'Pages built', 'value' => 7],
+        ['label' => 'Git commits', 'value' => 17],
         ['label' => 'Projects published', 'value' => 0],
         ['label' => 'Skills highlighted', 'value' => 5],
     ],
@@ -78,9 +78,14 @@ return [
         // ['title' => 'Sample', 'description' => '...', 'tags' => ['Laravel'], 'repo' => 'https://...'],
     ],
 
-    // Certifications / seminars / workshops — add entries and the cards render automatically.
-    // Example: ['name' => 'Seminar Title', 'issuer' => 'School / Org', 'year' => '2026', 'details' => '...']
+    // Certifications / seminars / workshops — add entries and the cards render automatically
+    // on the dedicated /certifications dashboard.
+    // Example: ['name' => 'Seminar Title', 'type' => 'Certification|Seminar|Workshop',
+    //           'issuer' => 'School / Org', 'year' => '2026', 'details' => '...']
     'certifications' => [],
+
+    // Ideas for future credentials shown on the certifications dashboard.
+    'cert_ideas' => ['CompTIA ITF+', 'Google IT Support', 'AWS Cloud Practitioner', 'Microsoft Azure AZ-900', 'Cisco CCNA'],
 
     'learning_goals' => ['Laravel Eloquent', 'JavaScript Fundamentals', 'Tailwind CSS', 'MySQL Queries', 'API Basics'],
 

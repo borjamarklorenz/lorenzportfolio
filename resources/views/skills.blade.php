@@ -1,12 +1,11 @@
 @extends('layouts.app')
 @section('title', 'Skills & Certifications')
 @section('heading', 'Skills & Certifications')
-@section('description', 'A dashboard of my tech stack, learning progress and certifications.')
+@section('description', 'A dashboard of my tech stack and learning progress.')
 
 @section('content')
 @php
     $skills = config('portfolio.skills');
-    $certs = config('portfolio.certifications');
     $avg = count($skills) ? round(array_sum(array_column($skills, 'level')) / count($skills)) : 0;
 @endphp
 <div class="grid">
@@ -21,8 +20,8 @@
             <div class="stat-label">Average progress %</div>
         </div>
         <div class="card stat-card reveal">
-            <div class="stat-num" data-target="{{ count($certs) }}">0</div>
-            <div class="stat-label">Certifications earned</div>
+            <div class="stat-num" data-target="{{ collect($skills)->where('level', '>=', 80)->count() }}">0</div>
+            <div class="stat-label">Skills at 80% or higher</div>
         </div>
         <div class="card stat-card reveal">
             <div class="stat-num" data-target="{{ count(config('portfolio.learning_goals')) }}">0</div>
@@ -48,27 +47,11 @@
 
     {{-- Certifications --}}
     <aside class="s4">
-        <section class="card reveal" style="margin-bottom:18px">
-            <div class="section-hint"><span class="dot"></span><p>Certifications</p></div>
-            <h2>Credentials</h2>
-            @forelse($certs as $cert)
-                <article class="card hover cert-item" style="padding:14px;margin-top:12px">
-                    <div class="t-head">
-                        <span class="cc-icon" style="width:38px;height:38px;border-radius:11px"><x-icon name="award" width="18" height="18"/></span>
-                        <div>
-                            <strong style="font-size:14px">{{ $cert['name'] }}</strong>
-                            <span class="t-period">{{ $cert['year'] }}</span>
-                        </div>
-                    </div>
-                    <p class="muted" style="font-size:12.5px;margin-top:6px">{{ $cert['issuer'] }} — {{ $cert['details'] }}</p>
-                </article>
-            @empty
-                <div class="empty-state" style="padding:24px 16px;margin-top:12px">
-                    <div class="empty-icon"><x-icon name="award"/></div>
-                    <h3 style="font-size:15px">No certifications yet</h3>
-                    <p class="muted">Add entries to <code>certifications</code> in <code>config/portfolio.php</code> and push a descriptive commit — cards appear automatically.</p>
-                </div>
-            @endforelse
+        <section class="card reveal" style="margin-bottom:18px;background:linear-gradient(140deg, rgba(168,85,247,0.14), rgba(99,102,241,0.1)), var(--panel)">
+            <div class="section-hint"><span class="dot"></span><p>Next milestone</p></div>
+            <h2>Certifications dashboard</h2>
+            <p class="muted" style="font-size:13.5px">Certificates, seminars and workshops have their own dedicated dashboard with achievement cards and planned credentials.</p>
+            <a class="btn btn-sm" style="margin-top:14px" href="{{ route('certifications') }}">🏆 Open certifications →</a>
         </section>
 
         <section class="card reveal" style="background:linear-gradient(140deg, rgba(34,211,238,0.14), rgba(99,102,241,0.1)), var(--panel)">
