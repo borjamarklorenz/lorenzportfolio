@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Skills & Certifications')
+@section('title', 'Skills')
 @section('heading', 'Skills & Certifications')
 @section('description', 'A dashboard of my tech stack and learning progress.')
 
