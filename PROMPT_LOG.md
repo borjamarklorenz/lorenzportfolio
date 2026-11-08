@@ -120,6 +120,10 @@
 * Prompt used: "make the Educational Background - Mark Lorenz B. Borja to MLBB - Portfolio"
 * Result/Output: The `<title>` format in `resources/views/partials/head.blade.php` was changed from `Page — Mark Lorenz B. Borja` to `Page - MLBB - Portfolio` (e.g. "Educational Background - MLBB - Portfolio"). Every page's tab title now shows the MLBB - Portfolio branding while headings inside the site still display the full name. The Skills page tab was also renamed from "Skills & Certifications" to "Skills" to match the earlier dashboard split, and all seven page titles were verified by fetching each route and reading the title tag.
 
+### Task: Adding the real profile photo and scanned certificate (user request)
+* Prompt used: "c:\Users\xlaur\Downloads\a5c2c9d2-...jpg put this as the profile picture in dashboard" and "c:\Users\xlaur\Downloads\b4f247dc-...jpg put this in certifications with its title"
+* Result/Output: Copied the portrait into `public/images/profile.jpg` and wired it into the dashboard hero, sidebar profile card and About page (SVG kept only as a static backup). Read the second image: a DICT Certificate of Participation for the webinar "Understanding Startups & Getting Your Idea Ready for the Philippine Startup Challenge XI" (via Zoom, September 7, 2026, issued by DICT Cordillera Administrative Region, Certificate No. COP-WSF-2026-68). Saved it as `public/images/certificate-dict-startup.jpg`, added the first entry to `config('portfolio.certifications')` with that title, issuer, year and details, gave the entry an `image` field, and updated `certifications.blade.php` to render a clickable certificate scan (opens full size) inside the award card with a `.cert-image` hover style. Stat cards now count by type (Webinars attended = 1). Dashboard "Git commits" stat refreshed.
+
 ---
 
 **Notes for instructors:** All prompts above were used to generate, debug, or style code. The repository is public, uses Blade only, has no migrations/models for portfolio data, and is kept intact for the final project (do not delete repo or local files per activity note). Deadline: August 28, 12:00 midnight.
