@@ -116,6 +116,10 @@
 * Prompt used: "Verify /skills and /certifications render, update README/PROMPT_LOG, regenerate the Word report and commit descriptively."
 * Result/Output: `/certifications` and `/skills` return 200 with expected content (counters, empty-state, roadmap chips, skill grid); no Blade exceptions. `PROMPT_AND_GIT_REPORT.docx` regenerated with this log and current git history; README updated (7 routes, split dashboards, structure tree).
 
+### Task: Renaming the browser tab titles (user request)
+* Prompt used: "make the Educational Background - Mark Lorenz B. Borja to MLBB - Portfolio"
+* Result/Output: The `<title>` format in `resources/views/partials/head.blade.php` was changed from `Page — Mark Lorenz B. Borja` to `Page - MLBB - Portfolio` (e.g. "Educational Background - MLBB - Portfolio"). Every page's tab title now shows the MLBB - Portfolio branding while headings inside the site still display the full name. The Skills page tab was also renamed from "Skills & Certifications" to "Skills" to match the earlier dashboard split, and all seven page titles were verified by fetching each route and reading the title tag.
+
 ---
 
 **Notes for instructors:** All prompts above were used to generate, debug, or style code. The repository is public, uses Blade only, has no migrations/models for portfolio data, and is kept intact for the final project (do not delete repo or local files per activity note). Deadline: August 28, 12:00 midnight.
