@@ -31,6 +31,18 @@
     @case('moon')
         <svg {{ $attributes->merge(['class' => 'icon', 'viewBox' => '0 0 24 24', 'fill' => 'none', 'stroke' => 'currentColor', 'stroke-width' => 1.8, 'stroke-linecap' => 'round', 'stroke-linejoin' => 'round']) }}><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     @break
+    @case('code')
+        <svg {{ $attributes->merge(['class' => 'icon', 'viewBox' => '0 0 24 24', 'fill' => 'none', 'stroke' => 'currentColor', 'stroke-width' => 1.8, 'stroke-linecap' => 'round', 'stroke-linejoin' => 'round']) }}><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    @break
+    @case('award')
+        <svg {{ $attributes->merge(['class' => 'icon', 'viewBox' => '0 0 24 24', 'fill' => 'none', 'stroke' => 'currentColor', 'stroke-width' => 1.8, 'stroke-linecap' => 'round', 'stroke-linejoin' => 'round']) }}><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg>
+    @break
+    @case('target')
+        <svg {{ $attributes->merge(['class' => 'icon', 'viewBox' => '0 0 24 24', 'fill' => 'none', 'stroke' => 'currentColor', 'stroke-width' => 1.8, 'stroke-linecap' => 'round', 'stroke-linejoin' => 'round']) }}><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>
+    @break
+    @case('zap')
+        <svg {{ $attributes->merge(['class' => 'icon', 'viewBox' => '0 0 24 24', 'fill' => 'none', 'stroke' => 'currentColor', 'stroke-width' => 1.8, 'stroke-linecap' => 'round', 'stroke-linejoin' => 'round']) }}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    @break
     @case('external')
         <svg {{ $attributes->merge(['class' => 'icon', 'viewBox' => '0 0 24 24', 'fill' => 'none', 'stroke' => 'currentColor', 'stroke-width' => 1.8, 'stroke-linecap' => 'round', 'stroke-linejoin' => 'round']) }}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
     @break

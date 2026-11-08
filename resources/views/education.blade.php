@@ -24,23 +24,21 @@
 
         <div class="divide"></div>
         <div class="section-hint"><span class="dot"></span><p>Certifications</p></div>
-        <div class="empty-state" style="padding:22px 18px">
-            <div class="empty-icon"><x-icon name="cap"/></div>
-            <h3 style="font-size:15px">No certifications listed yet</h3>
-            <p class="muted">Add seminars, workshops and certificates here as they are earned.</p>
-        </div>
+        <p class="muted" style="font-size:13.5px">Certifications, seminars and workshops now live in their own dashboard so they always stay up to date.</p>
+        <a class="btn btn-sm" style="margin-top:12px" href="{{ route('skills') }}">Open Skills & Certifications dashboard →</a>
     </section>
 
     <aside class="s4">
         <section class="card reveal" style="margin-bottom:18px">
-            <div class="section-hint"><span class="dot"></span><p>Skills</p></div>
-            <h2>Learning progress</h2>
-            @foreach(config('portfolio.skills') as $skill)
-                <div class="skill">
-                    <div class="skill-top"><b>{{ $skill['name'] }}</b><span>{{ $skill['level'] }}%</span></div>
-                    <div class="skill-bar"><div class="skill-fill" data-level="{{ $skill['level'] }}"></div></div>
-                </div>
-            @endforeach
+            <div class="section-hint"><span class="dot"></span><p>At a glance</p></div>
+            <h2>Study highlights</h2>
+            <div class="info-list" style="margin-top:10px">
+                <b>College</b><span>Data Center College of Bangued</span>
+                <b>Course</b><span>BSIT — Information Technology</span>
+                <b>High school</b><span>Abra High School (2021)</span>
+                <b>Elementary</b><span>Bangued East Central School (2017)</span>
+            </div>
+            <a class="btn btn-ghost btn-sm" style="margin-top:14px" href="{{ route('skills') }}">See skill levels →</a>
         </section>
         <section class="card reveal">
             <div class="section-hint"><span class="dot"></span><p>Currently</p></div>

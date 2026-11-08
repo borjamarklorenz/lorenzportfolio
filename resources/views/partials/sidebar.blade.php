@@ -22,6 +22,9 @@
         <a href="{{ route('education') }}" class="{{ request()->routeIs('education') ? 'active' : '' }}">
             <x-icon name="cap"/><span>Education</span>
         </a>
+        <a href="{{ route('skills') }}" class="{{ request()->routeIs('skills') ? 'active' : '' }}">
+            <x-icon name="zap"/><span>Skills & Certs</span>
+        </a>
         <a href="{{ route('projects') }}" class="{{ request()->routeIs('projects') ? 'active' : '' }}">
             <x-icon name="briefcase"/><span>Projects</span>
         </a>

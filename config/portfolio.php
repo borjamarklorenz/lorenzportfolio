@@ -41,11 +41,18 @@ return [
             'details' => 'Course focused on systems, programming and web development. Built this Laravel Blade portfolio for the IPA BSIT 4 Midterm: Git/GitHub workflow plus documented AI prompting.',
         ],
         [
-            'status' => 'Earlier',
-            'school' => 'Elementary / Secondary education',
-            'degree' => 'To be updated',
-            'period' => '—',
-            'details' => 'Add school names, years attended and achievements here as you gather them.',
+            'status' => 'Completed',
+            'school' => 'Abra High School',
+            'degree' => 'Secondary — High School',
+            'period' => '2021',
+            'details' => 'Completed secondary education at Abra High School.',
+        ],
+        [
+            'status' => 'Completed',
+            'school' => 'Bangued East Central School',
+            'degree' => 'Elementary',
+            'period' => '2017',
+            'details' => 'Completed elementary education at Bangued East Central School.',
         ],
     ],
 
@@ -70,6 +77,12 @@ return [
         // Example structure:
         // ['title' => 'Sample', 'description' => '...', 'tags' => ['Laravel'], 'repo' => 'https://...'],
     ],
+
+    // Certifications / seminars / workshops — add entries and the cards render automatically.
+    // Example: ['name' => 'Seminar Title', 'issuer' => 'School / Org', 'year' => '2026', 'details' => '...']
+    'certifications' => [],
+
+    'learning_goals' => ['Laravel Eloquent', 'JavaScript Fundamentals', 'Tailwind CSS', 'MySQL Queries', 'API Basics'],
 
     'project_ideas' => ['Portfolio Dashboard', 'Barangay Services App', 'Student Records Portal', 'E-commerce Starter', 'School Event Manager'],
 
