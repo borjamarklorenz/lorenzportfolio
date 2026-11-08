@@ -11,7 +11,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // Behind Vercel's edge proxy: honor X-Forwarded-* so Blade assets
+        // and route URLs come out https-augmented. XAMPP has no proxy,
+        // so local behavior stays identical.
+        if (isset($_SERVER['VERCEL']) || isset($_ENV['VERCEL'])) {
+            $middleware->trustProxies(at: '*');
+        }
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

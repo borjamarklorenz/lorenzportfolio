@@ -50,7 +50,22 @@ php artisan serve
 # open http://localhost:8000 (or http://localhost/lorenz-portfolio under XAMPP htdocs)
 ```
 
-> If running under XAMPP, place this folder in `C:\xampp\htdocs\` and visit `http://localhost/lorenz-portfolio`. The profile picture placeholder is `public/images/profile.svg` — replace it with your real photo as `public/images/profile.jpg` and update the `<img>` src in Blade views if you prefer JPG.
+> If running under XAMPP, place this folder in `C:\xampp\htdocs\` and visit `http://localhost/lorenz-portfolio`. The profile picture is `public/images/profile.jpg`.
+
+## Deploy to Vercel
+
+The repository is ready for [Vercel](https://vercel.com) using the community `vercel-php` PHP 8.4 runtime — no database is needed. Everything required is committed:
+
+- `api/index.php` — serverless entry point (prepares writable `/tmp` dirs, then forwards to `public/index.php`)
+- `vercel.json` — pins runtime, routes `/css/*` and `/images/*` to `public/`, passes everything else to the function, sets serverless-friendly env defaults (`stderr` logs, `cookie` sessions, `array` cache, compiled views in `/tmp`)
+- `.vercelignore` — keeps `vendor/`, `tests/`, `storage/` and secrets out of the deployment bundle
+- `bootstrap/app.php` — trusts Vercel's proxy headers so pages/adapters render `https://` links behind the edge network
+
+### One-time setup in the Vercel dashboard
+
+1. Add an env var `APP_KEY` (value = output of `php artisan key:generate --show` on your machine). No other secrets are required.
+2. Import the GitHub repo (`borjamarklorenz/lorenzportfolio`) as a project — or run `npx vercel` from the project root and follow the prompts.
+3. Deploy. Every push to `main` then auto-deploys.
 
 ## AI prompt documentation
 

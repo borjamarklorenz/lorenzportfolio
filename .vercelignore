@@ -1,0 +1,16 @@
+# Never upload these to your Vercel deployment:
+/.git
+/.github
+/vendor
+/node_modules
+/tests
+/storage
+/database
+.env
+.env.backup
+.env.production
+
+# Personal artifacts that do not need to be inside the function bundle:
+/generate_docx.php
+/PROMPT_AND_GIT_REPORT.docx
+/PROMPT_LOG.md
