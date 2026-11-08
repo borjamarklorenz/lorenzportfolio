@@ -96,6 +96,18 @@
 * Prompt used: "Update README.md to document the new design system, structure, config-driven content and partials, then regenerate PROMPT_AND_GIT_REPORT.docx so it includes the redesign prompts and latest git history."
 * Result/Output: README features/structure sections rewritten for the redesigned architecture. `generate_docx.php` re-run to rebuild `PROMPT_AND_GIT_REPORT.docx` with this task log and current `git log` included, then copies placed in the workspace root for submission.
 
+### Task: Adding real school history (user request)
+* Prompt used: "1. edit the Elementary and Secondary: Secondary: Abra High School - 2021, Elementary: Bangued East Central School - 2017"
+* Result/Output: Updated `config/portfolio.php` with three education entries: Data Center College of Bangued (BSIT, Current/Ongoing), Abra High School (Secondary, Completed, 2021), Bangued East Central School (Elementary, Completed, 2017). Added a `.t-status.completed` badge style; the education page timeline now shows all three schools with their years, and its summary card lists the full history.
+
+### Task: Making Skills & Certifications a dedicated dashboard (user request)
+* Prompt used: "2. make the certifications and skills as another dashboard"
+* Result/Output: Added a new page `GET /skills` (named `skills`) served by `PortfolioController@skills` with view `skills.blade.php` and a sidebar link ("Skills & Certs", zap icon). The page is dashboard-style: four animated stat cards (skills tracked, average progress %, certifications earned, learning goals), a responsive grid of skill cards with glowing code icons and animated progress bars, a certifications section (`config('portfolio.certifications')` — empty-state ready, cards render automatically when entries are added with name/issuer/year/details), and a learning-goals card. New `<x-icon>` cases: `code`, `award`, `target`, `zap`. Education page's certifications/skills cards were replaced by links pointing to the new dashboard.
+
+### Task: Verifying the additions and updating documentation
+* Prompt used: "Verify the new skills dashboard and updated education timeline render without errors, update README/PROMPT_LOG, regenerate the Word report and commit descriptively."
+* Result/Output: `/skills` and `/education` return 200 with expected content (Abra High School, Bangued East Central School, skill cards, certifications empty-state); no Blade exceptions. README routes/features updated; `PROMPT_AND_GIT_REPORT.docx` regenerated with this task and final `git log`.
+
 ---
 
 **Notes for instructors:** All prompts above were used to generate, debug, or style code. The repository is public, uses Blade only, has no migrations/models for portfolio data, and is kept intact for the final project (do not delete repo or local files per activity note). Deadline: August 28, 12:00 midnight.
