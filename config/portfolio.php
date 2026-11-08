@@ -67,15 +67,26 @@ return [
 
     'stats' => [
         ['label' => 'Pages built', 'value' => 7],
-        ['label' => 'Git commits', 'value' => 19],
-        ['label' => 'Projects published', 'value' => 0],
+        ['label' => 'Git commits', 'value' => 24],
+        ['label' => 'Projects published', 'value' => 1],
         ['label' => 'Skills highlighted', 'value' => 5],
     ],
 
     'projects' => [
-        // Intentionally empty per owner's request — cards render automatically once added here.
-        // Example structure:
-        // ['title' => 'Sample', 'description' => '...', 'tags' => ['Laravel'], 'repo' => 'https://...'],
+        [
+            'title' => 'Barangay Directory and Document Request and Public Information System',
+            'short' => 'System (BDRPIS) for Barangay Linasin, Zone 1, Bangued, Abra',
+            'description' => 'An online portal that lets residents request barangay certificates and clearances, track the status of their requests, and access public information — announcements, resident verification, relief distribution updates and the barangay officials directory — from Barangay Linasin, Zone 1, Bangued, Abra.',
+            'features' => ['Document requests & tracking', 'Public announcements & news', 'Verify a resident', 'Relief distribution updates', 'Barangay officials directory'],
+            'tags' => ['Web Application', 'Community Services', 'Document Requests', 'Public Information'],
+            'images' => [
+                ['src' => 'images/projects/bdrpis-home.png', 'alt' => 'BDRPIS public homepage — welcome to Barangay Linasin, Zone 1, Bangued, Abra'],
+                ['src' => 'images/projects/bdrpis-services.png', 'alt' => 'BDRPIS quick services — document requests, public information, resident verification, relief distribution, barangay officials'],
+                ['src' => 'images/projects/bdrpis-login.png', 'alt' => 'BDRPIS sign-in page for residents of Barangay Linasin'],
+            ],
+            'repo' => '',
+        ],
+        // More projects can be added here following the same structure.
     ],
 
     // Certifications / seminars / workshops — add entries and the cards render automatically
@@ -97,6 +108,6 @@ return [
 
     'learning_goals' => ['Laravel Eloquent', 'JavaScript Fundamentals', 'Tailwind CSS', 'MySQL Queries', 'API Basics'],
 
-    'project_ideas' => ['Portfolio Dashboard', 'Barangay Services App', 'Student Records Portal', 'E-commerce Starter', 'School Event Manager'],
+    'project_ideas' => ['Portfolio Dashboard', 'Student Records Portal', 'E-commerce Starter', 'School Event Manager'],
 
 ];

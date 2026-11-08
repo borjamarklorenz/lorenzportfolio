@@ -16,27 +16,48 @@
         </div>
 
         @forelse($projects as $project)
-            <div class="grid-cards" style="margin-top:16px">
-                <article class="card hover project-card">
-                    <h3>{{ $project['title'] }}</h3>
-                    <p class="muted" style="font-size:13.5px">{{ $project['description'] }}</p>
-                    <div class="tags">
+            <article class="card hover {{ empty($project['images']) ? 'project-card' : 'project-wide' }}" style="margin-top:16px">
+                <div class="pw-media">
+                    @if(!empty($project['images']))
+                        <div class="gallery">
+                            <div class="g-main">
+                                <img src="{{ asset($project['images'][0]['src']) }}" alt="{{ $project['images'][0]['alt'] }}">
+                            </div>
+                            <div class="g-thumbs">
+                                @foreach($project['images'] as $i => $img)
+                                    <button type="button" class="{{ $i === 0 ? 'active' : '' }}" data-src="{{ asset($img['src']) }}" data-alt="{{ $img['alt'] }}" title="{{ $img['alt'] }}">
+                                        <img src="{{ asset($img['src']) }}" alt="{{ $img['alt'] }}" loading="lazy">
+                                    </button>
+                                @endforeach
+                            </div>
+                            <p class="g-caption muted">Click a thumbnail below the preview to switch screenshots.</p>
+                        </div>
+                    @endif
+                </div>
+                <div class="pw-info">
+                    <div class="section-hint" style="margin-bottom:8px"><span class="dot"></span><p>Featured system</p></div>
+                    <h3>{{ $project['title'] }} @if(!empty($project['short']))<span class="muted" style="font-weight:500">— {{ $project['short'] }}</span>@endif</h3>
+                    <p class="muted" style="font-size:13.5px;margin-top:8px">{{ $project['description'] }}</p>
+                    @if(!empty($project['features']))
+                        <div class="feats">
+                            @foreach($project['features'] as $feature)
+                                <span class="feat"><x-icon name="external" width="14" height="14"/>{{ $feature }}</span>
+                            @endforeach
+                        </div>
+                    @endif
+                    <div class="tags" style="margin-top:12px">
                         @foreach($project['tags'] as $tag)<span class="chip">{{ $tag }}</span>@endforeach
                     </div>
                     @if(!empty($project['repo']))
-                        <a class="btn btn-sm btn-ghost" style="align-self:flex-start;margin-top:6px" href="{{ $project['repo'] }}" target="_blank" rel="noopener">Repository ↗</a>
+                        <a class="btn btn-sm btn-ghost" style="margin-top:14px;align-self:flex-start" href="{{ $project['repo'] }}" target="_blank" rel="noopener">Repository ↗</a>
                     @endif
-                </article>
-            </div>
+                </div>
+            </article>
         @empty
             <div class="empty-state" style="margin-top:16px">
                 <div class="empty-icon"><x-icon name="briefcase"/></div>
                 <h3>No projects yet — grid is ready</h3>
-                <p class="muted">This section intentionally stays empty for now. Add entries to <code>config/portfolio.php</code> and push a descriptive commit such as <em>“Add first project card to the projects grid”</em> — cards render automatically.</p>
-                <div class="cta-row">
-                    <a class="btn" href="{{ route('contact') }}">Collaborate with me</a>
-                    <a class="btn btn-ghost" href="{{ route('dashboard') }}">Back to dashboard</a>
-                </div>
+                <p class="muted">Add entries to <code>config/portfolio.php</code> and push a descriptive commit — cards render automatically.</p>
             </div>
         @endforelse
     </section>

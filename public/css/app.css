@@ -269,6 +269,25 @@ img { max-width: 100%; display: block; }
 .timeline-item p.muted { font-size: 13px; }
 
 /* Projects */
+.project-wide { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 20px; align-items: start; }
+@media (max-width: 900px) { .project-wide { grid-template-columns: 1fr; } }
+.pw-info { display: flex; flex-direction: column; }
+.pw-info h3 { font-size: 18px; line-height: 1.4; }
+.pw-info h3 .muted { font-weight: 500; font-size: 14px; }
+.feats { display: flex; flex-direction: column; gap: 7px; margin-top: 12px; }
+.feat { display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; color: var(--accent-2); }
+
+.gallery { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--bg-soft); }
+.g-main img { width: 100%; display: block; }
+.g-thumbs { display: flex; gap: 8px; padding: 8px; }
+.g-thumbs button { flex: 1; padding: 0; height: 62px; border: 1px solid var(--border); border-radius: 9px; overflow: hidden; background: none; cursor: pointer; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.g-thumbs button img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.g-thumbs button:hover { border-color: rgba(99, 102, 241, 0.6); }
+.g-thumbs button.active { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.45); }
+.g-caption { font-size: 11px; padding: 0 10px 8px; }
+.pc-banner { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 12px; }
+.pc-banner img { width: 100%; height: 118px; object-fit: cover; object-position: top; display: block; }
+
 .grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
 .project-card { display: flex; flex-direction: column; gap: 10px; }
 .project-card .tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: auto; }

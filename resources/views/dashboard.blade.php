@@ -84,17 +84,21 @@
                 <p class="muted">The project grid is set up and ready — cards will appear here automatically once added to <code>config/portfolio.php</code>.</p>
             </div>
         @else
-            <div class="grid-cards">
+            <div class="grid-cards" style="margin-top:16px">
                 @foreach(config('portfolio.projects') as $project)
                     <article class="card hover project-card">
+                        @if(!empty($project['images']))
+                            <a class="pc-banner" href="{{ route('projects') }}" title="Open the project gallery">
+                                <img src="{{ asset($project['images'][0]['src']) }}" alt="{{ $project['images'][0]['alt'] }}" loading="lazy">
+                            </a>
+                        @endif
                         <h3>{{ $project['title'] }}</h3>
+                        @if(!empty($project['short']))<p class="muted" style="font-size:12.5px;margin-top:-2px">{{ $project['short'] }}</p>@endif
                         <p class="muted" style="font-size:13.5px">{{ $project['description'] }}</p>
                         <div class="tags">
                             @foreach($project['tags'] as $tag)<span class="chip">{{ $tag }}</span>@endforeach
                         </div>
-                        @if(!empty($project['repo']))
-                            <a class="btn btn-sm btn-ghost" style="align-self:flex-start;margin-top:6px" href="{{ $project['repo'] }}" target="_blank" rel="noopener">Repository ↗</a>
-                        @endif
+                        <a class="btn btn-sm btn-ghost" style="align-self:flex-start;margin-top:6px" href="{{ route('projects') }}">View gallery →</a>
                     </article>
                 @endforeach
             </div>

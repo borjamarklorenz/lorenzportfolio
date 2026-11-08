@@ -81,6 +81,17 @@
     })();
   }
 
+  /* Project screenshot galleries */
+  d.querySelectorAll('.gallery .g-thumbs button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var gal = btn.closest('.gallery'),
+          main = gal.querySelector('.g-main img');
+      if (main) { main.src = btn.dataset.src; main.alt = btn.dataset.alt; }
+      gal.querySelectorAll('.g-thumbs button').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+
   /* Contact form -> mailto */
   var form = d.getElementById('contactForm');
   if (form) form.addEventListener('submit', function (e) {
