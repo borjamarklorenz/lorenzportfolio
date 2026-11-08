@@ -62,7 +62,7 @@
         @endforelse
     </section>
 
-    <section class="card s6 reveal">
+    <section class="card s12 reveal">
         <div class="section-hint"><span class="dot"></span><p>On the roadmap</p></div>
         <h3>Planned project ideas</h3>
         <p class="muted" style="font-size:13.5px;margin-bottom:12px">Ideas waiting to be built — they will move to the grid above as they are completed.</p>
@@ -70,17 +70,6 @@
             @foreach(config('portfolio.project_ideas') as $idea)
                 <span class="chip">{{ $idea }}</span>
             @endforeach
-        </div>
-    </section>
-
-    <section class="card s6 reveal" style="background:linear-gradient(140deg, rgba(168,85,247,0.14), rgba(99,102,241,0.1)), var(--panel)">
-        <div class="section-hint"><span class="dot"></span><p>Workflow</p></div>
-        <h3>How projects get here</h3>
-        <div class="info-list" style="margin-top:10px">
-            <b>Step 1</b><span>Build the app with Laravel / Blade</span>
-            <b>Step 2</b><span>Push to a public GitHub repository</span>
-            <b>Step 3</b><span>Add a card to <code>config/portfolio.php</code></span>
-            <b>Step 4</b><span>Commit: “Add &lt;project&gt; card to the projects grid”</span>
         </div>
     </section>
 </div>
