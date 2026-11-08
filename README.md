@@ -13,7 +13,8 @@
 - **Dashboard home (`/`)** — animated hero with glowing gradient-ring profile photo, typing subtitle, contact badges, animated stat counters, skill progress bars, education/projects previews and "explore" navigation card.
 - **Basic Information (`/about`)** — full name, contact details, short bio, profile picture, interests chips.
 - **Educational Background (`/education`)** — gradient timeline: Data Center College of Bangued (BSIT, current), Abra High School (2021), Bangued East Central School (2017), plus a study-highlights summary card.
-- **Skills & Certifications (`/skills`)** — a dedicated second dashboard: animated stat cards, a grid of skill-level cards with progress bars, a certifications section (empty-state ready to fill) and next learning goals.
+- **Skills (`/skills`)** — a dedicated dashboard: animated stat cards, a grid of skill-level cards with progress bars and next learning goals.
+- **Certifications (`/certifications`)** — a separate dashboard purely for credentials: animated counters by type (Certification / Seminar / Workshop), award cards that render automatically from `config/portfolio.php`, and "planned certifications" roadmap chips.
 - **Projects (`/projects`)** — grid layout with descriptions. Currently empty by design, with an elegant empty-state card and "planned ideas" + workflow cards ready to fill.
 - **Contact & GitHub links (`/contact`)** — clickable email/phone/location cards, GitHub links and a mailto-powered message form (no backend needed).
 - **Design system** — dark-first glassmorphism theme with light/dark toggle (persisted in localStorage), animated gradient orbs + scroll progress bar, reveal-on-scroll animations, Sora + Inter fonts, inline SVG icon system, responsive sidebar that collapses to a mobile drawer.
@@ -35,7 +36,8 @@
 | `GET /` | Dashboard |
 | `GET /about` | Basic Information |
 | `GET /education` | Educational Background |
-| `GET /skills` | Skills & Certifications dashboard |
+| `GET /skills` | Skills dashboard |
+| `GET /certifications` | Certifications dashboard |
 | `GET /projects` | Projects (empty grid) |
 | `GET /contact` | Contact & GitHub Links |
 
@@ -77,6 +79,7 @@ resources/views/
   partials/{head,sidebar,topbar,footer,scripts}.blade.php
   components/icon.blade.php <x-icon> inline SVG icon component
   dashboard.blade.php  about.blade.php  education.blade.php
+  skills.blade.php     certifications.blade.php
   projects.blade.php   contact.blade.php
 public/
   css/app.css               Redesigned stylesheet (dark + light themes)

@@ -108,6 +108,14 @@
 * Prompt used: "Verify the new skills dashboard and updated education timeline render without errors, update README/PROMPT_LOG, regenerate the Word report and commit descriptively."
 * Result/Output: `/skills` and `/education` return 200 with expected content (Abra High School, Bangued East Central School, skill cards, certifications empty-state); no Blade exceptions. README routes/features updated; `PROMPT_AND_GIT_REPORT.docx` regenerated with this task and final `git log`.
 
+### Task: Splitting certifications into their own dashboard (user request)
+* Prompt used: "make the certification with a seperate dashboard"
+* Result/Output: Skills and certifications are now two independent dashboards. Added `GET /certifications` (name `certifications`, `PortfolioController@certifications`, view `certifications.blade.php`) with: four animated counters split by entry type (Certification / Seminar / Workshop / Planned to take), award cards that render automatically from `config('portfolio.certifications')` each with a type chip and issuer/year/details, an elegant empty-state explaining how to add entries, and a roadmap card with `cert_ideas` chips (CompTIA ITF+, Google IT Support, AWS, Azure AZ-900, CCNA). Sidebar now lists Skills and Certifications as separate links (zap / award icons); the skills dashboard's certification section was replaced by a promo card linking to the new page, and its stat cards were rebalanced ("Skills at 80% or higher"). Education page, dashboard Explore card, README routes/features and this log were updated accordingly.
+
+### Task: Verifying and releasing the split dashboards
+* Prompt used: "Verify /skills and /certifications render, update README/PROMPT_LOG, regenerate the Word report and commit descriptively."
+* Result/Output: `/certifications` and `/skills` return 200 with expected content (counters, empty-state, roadmap chips, skill grid); no Blade exceptions. `PROMPT_AND_GIT_REPORT.docx` regenerated with this log and current git history; README updated (7 routes, split dashboards, structure tree).
+
 ---
 
 **Notes for instructors:** All prompts above were used to generate, debug, or style code. The repository is public, uses Blade only, has no migrations/models for portfolio data, and is kept intact for the final project (do not delete repo or local files per activity note). Deadline: August 28, 12:00 midnight.
